@@ -501,7 +501,9 @@ function IdCardBack({ data, theme = DEFAULT_THEME }) {
                 fontSize: 8,
                 lineHeight: 1.4,
                 color: theme.onFrameMuted,
-                maxWidth: 156
+                maxWidth: 156,
+                overflowWrap: 'anywhere',
+                wordBreak: 'break-word'
               }}>
               
               {data.officeAddress || ''}
