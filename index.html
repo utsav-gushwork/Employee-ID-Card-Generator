@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1100" />
+    <title>Employee ID Card Generator</title>
+    <meta name="description" content="Create professional employee ID cards in minutes. Customize details, preview instantly, and download print-ready ID cards for your team." />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Employee ID Card Generator" />
+    <meta property="og:description" content="Create professional employee ID cards in minutes. Customize details, preview instantly, and download print-ready ID cards for your team." />
+    <meta property="og:image" content="assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Employee ID Card Generator" />
+    <meta name="twitter:description" content="Create professional employee ID cards in minutes. Customize details, preview instantly, and download print-ready ID cards for your team." />
+    <meta name="twitter:image" content="assets/og-image.png" />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI0NyIgcng9IjcuNSIgZmlsbD0iIzBEMEQwRCI+PC9yZWN0Pgo8cmVjdCB4PSIwLjUiIHk9IjAuNSIgd2lkdGg9IjQ3IiBoZWlnaHQ9IjQ3IiByeD0iNy41IiBzdHJva2U9IiM0RDU0NUMiPjwvcmVjdD4KPHBhdGggZD0iTTM0Ljk4MjYgMTMuMzY5QzM1LjI1MDggMTIuNzA4MiAzNC43NTQ5IDEyIDM0LjA0MTcgMTJIMTQuNzQyOUMxMy4yMjggMTIgMTIgMTMuMjI4IDEyIDE0Ljc0MjlWMzIuMDMzM0MxMiAzMy42MDU0IDEzLjU1MTIgMzQuNzA0OSAxNC45ODgxIDM0LjA2N0MyNC4yNTQ4IDI5Ljk1MzUgMzEuMzEzNSAyMi40MTIyIDM0Ljk4MjYgMTMuMzY5WiIgZmlsbD0id2hpdGUiPjwvcGF0aD4KPHBhdGggZD0iTTIxLjc1NDggMzZDMjEuNDIwNyAzNiAyMS4yODA3IDM1LjU2NTkgMjEuNTQ3OCAzNS4zNjUxQzI4LjQ3MDIgMzAuMTU4IDMzLjQzMDEgMjIuNzQxNCAzNS42Mjk3IDE0LjQxNTdDMzUuNjgyMSAxNC4yMTc1IDM2IDE0LjI1NDkgMzYgMTQuNDU5OVYzMy4yNTcxQzM2IDM0Ljc3MiAzNC43NzIgMzYgMzMuMjU3MSAzNkgyMS43NTQ4WiIgZmlsbD0id2hpdGUiPjwvcGF0aD4KPC9zdmc+" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css?v=21" />
+  </head>
+  <body>
+    <!-- ── Password gate ──────────────────────────────────────────────
+         Lightweight client-side access gate. Note: client-side checks
+         can be bypassed by inspecting source — this deters casual access,
+         it is not strong security. Unlock persists for the browser
+         session (sessionStorage). -->
+    <div id="pw-gate" hidden>
+      <div class="pw-grid" aria-hidden="true"></div>
+      <div class="pw-grid-cells" id="pw-grid-cells" aria-hidden="true"></div>
+      <div class="pw-card">
+        <div class="pw-logo" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 28.8 28.8" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 27.579 1.643 C 27.901 0.85 27.306 0 26.45 0 L 3.291 0 C 1.474 0 0 1.474 0 3.291 L 0 24.04 C 0 25.926 1.861 27.246 3.586 26.48 C 14.706 21.544 23.176 12.495 27.579 1.643 Z"></path>
+            <path d="M 11.706 28.8 C 11.305 28.8 11.137 28.279 11.457 28.038 C 19.764 21.79 25.716 12.89 28.356 2.899 C 28.419 2.661 28.8 2.706 28.8 2.952 L 28.8 25.509 C 28.8 27.326 27.326 28.8 25.509 28.8 L 11.706 28.8 Z"></path>
+          </svg>
+        </div>
+        <div class="pw-heading">
+          <h1 class="pw-title">Employee ID Card Generator</h1>
+          <p class="pw-subtitle">Please enter password to continue.</p>
+        </div>
+        <form id="pw-form" class="pw-form" autocomplete="off">
+          <input id="pw-input" type="password" placeholder="Password" aria-label="Password" autocomplete="off" spellcheck="false" />
+          <button id="pw-submit" type="submit">
+            <span>Continue</span>
+            <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+            </svg>
+          </button>
+        </form>
+        <p id="pw-error" class="pw-error" hidden>Incorrect password. Try again.</p>
+      </div>
+    </div>
+
+    <style>
+      #pw-gate {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: #f3f3f3;
+        font-family: 'Inter', system-ui, sans-serif;
+      }
+      #pw-gate[hidden] { display: none; }
+      /* 40px grid of hairline cells — the Figma background motif */
+      .pw-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(to right, #eaebef 1.5px, transparent 1.5px),
+          linear-gradient(to bottom, #eaebef 1.5px, transparent 1.5px);
+        background-size: 40px 40px;
+        background-position: -1px -1px;
+        pointer-events: none;
+      }
+      /* Scattered soft-filled cells, placed by JS */
+      .pw-grid-cells {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .pw-grid-cells .cell {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: #e1e3e8;
+      }
+      .pw-card {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 380px;
+        box-sizing: border-box;
+        background: #fff;
+        border-radius: 28px;
+        padding: 56px 44px;
+        box-shadow: 0 16px 40px -8px rgba(88, 92, 95, 0.16);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+      }
+      .pw-logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        background: #0d0d0d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .pw-heading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-align: center;
+      }
+      .pw-title {
+        margin: 0;
+        font-family: 'Vert Grotesk Display', 'Inter', system-ui, sans-serif;
+        font-size: 23px;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.016em;
+        color: #000;
+      }
+      .pw-subtitle {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+        letter-spacing: -0.002em;
+        color: #6a7077;
+      }
+      .pw-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      #pw-input {
+        width: 100%;
+        height: 48px;
+        box-sizing: border-box;
+        padding: 0 16px;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 500;
+        color: #0d0d0d;
+        background: #f1f2f3;
+        border: 1.5px solid transparent;
+        border-radius: 11px;
+        outline: none;
+        transition: background 120ms, border-color 120ms, box-shadow 120ms;
+      }
+      #pw-input::placeholder { color: #9aa0a7; font-weight: 400; }
+      #pw-input:focus {
+        background: #fff;
+        border-color: #0d0d0d;
+        box-shadow: 0 0 0 3px rgba(13, 13, 13, 0.08);
+      }
+      #pw-submit {
+        width: 100%;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: -0.002em;
+        color: #fff;
+        background: #0d0d0d;
+        border: none;
+        border-radius: 11px;
+        cursor: pointer;
+        box-shadow: 0 16px 32px -12px rgba(88, 92, 95, 0.1);
+        transition: background 140ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      #pw-submit:hover { background: #262a2e; }
+      #pw-submit svg { display: block; }
+      .pw-error {
+        margin: -14px 0 0;
+        font-size: 12.5px;
+        font-weight: 500;
+        color: #fb3748;
+        text-align: center;
+      }
+      .pw-error[hidden] { display: none; }
+      .pw-card.shake { animation: pw-shake 360ms cubic-bezier(0.36, 0.07, 0.19, 0.97); }
+      @keyframes pw-shake {
+        10%, 90% { transform: translateX(-1px); }
+        20%, 80% { transform: translateX(2px); }
+        30%, 50%, 70% { transform: translateX(-5px); }
+        40%, 60% { transform: translateX(5px); }
+      }
+    </style>
+
+    <div id="root"></div>
+
+    <script>
+      (function () {
+        var KEY = 'gw-id-card-unlocked';
+        // Lightly obfuscated (reversed) so the literal isn't in source.
+        var EXPECTED = '6202hsug';
+        function check(v) { return v.split('').reverse().join('') === EXPECTED; }
+
+        var gate = document.getElementById('pw-gate');
+
+        if (sessionStorage.getItem(KEY) === '1') {
+          gate.remove();
+          return;
+        }
+
+        // Hide the app until unlocked. #root lives just above this script.
+        var root = document.getElementById('root');
+        if (root) root.style.visibility = 'hidden';
+        gate.hidden = false;
+
+        // Scatter a few soft-filled cells on the grid (like the reference),
+        // clustered as single or diagonal-pair cells, kept sparse and clear
+        // of the card in the centre.
+        function scatterCells() {
+          var host = document.getElementById('pw-grid-cells');
+          if (!host) return;
+          host.innerHTML = '';
+          var G = 40, off = -1;
+          var W = window.innerWidth, H = window.innerHeight;
+          var cols = Math.ceil(W / G), rows = Math.ceil(H / G);
+          // Exclusion box around the centred card.
+          var cx = W / 2, cy = H / 2;
+          var exW = 300, exH = 250;
+          var used = {};
+          function place(i, j) {
+            if (i < 0 || j < 0 || i >= cols || j >= rows) return false;
+            var key = i + ':' + j;
+            if (used[key]) return false;
+            var left = off + i * G, top = off + j * G;
+            // skip if cell centre is inside the card exclusion zone
+            if (Math.abs(left + G / 2 - cx) < exW && Math.abs(top + G / 2 - cy) < exH) return false;
+            used[key] = true;
+            var el = document.createElement('div');
+            el.className = 'cell';
+            el.style.left = left + 'px';
+            el.style.top = top + 'px';
+            host.appendChild(el);
+            return true;
+          }
+          // Density matched to the reference (~6 fills over 1512x947),
+          // mostly single cells with the occasional touching diagonal pair.
+          var target = Math.round((W * H) / 240000) + 1;
+          target = Math.max(4, Math.min(9, target));
+          var placed = 0, tries = 0;
+          while (placed < target && tries < 200) {
+            tries++;
+            var i = Math.floor(Math.random() * cols);
+            var j = Math.floor(Math.random() * rows);
+            if (!place(i, j)) continue;
+            placed++;
+            // ~30% chance to add a diagonally-adjacent partner (touching pair)
+            if (placed < target && Math.random() < 0.3) {
+              var di = Math.random() < 0.5 ? 1 : -1;
+              var dj = Math.random() < 0.5 ? 1 : -1;
+              if (place(i + di, j + dj)) placed++;
+            }
+          }
+        }
+        scatterCells();
+        var rsTimer;
+        window.addEventListener('resize', function () {
+          clearTimeout(rsTimer);
+          rsTimer = setTimeout(scatterCells, 150);
+        });
+
+        var form = document.getElementById('pw-form');
+        var input = document.getElementById('pw-input');
+        var error = document.getElementById('pw-error');
+        var card = gate.querySelector('.pw-card');
+        input.focus();
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (check(input.value)) {
+            sessionStorage.setItem(KEY, '1');
+            if (root) root.style.visibility = '';
+            gate.style.transition = 'opacity 200ms ease';
+            gate.style.opacity = '0';
+            setTimeout(function () { gate.remove(); }, 220);
+          } else {
+            error.hidden = false;
+            card.classList.remove('shake');
+            void card.offsetWidth; // restart animation
+            card.classList.add('shake');
+            input.value = '';
+            input.focus();
+          }
+        });
+      })();
+    </script>
+
+    <!-- pinned React + Babel -->
+    <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+    <!-- html-to-image — used for the "Download as PNG" export -->
+    <script src="https://unpkg.com/html-to-image@1.11.13/dist/html-to-image.js"></script>
+
+    <!-- jsPDF — used to build a real PDF blob for email attachments -->
+    <script src="https://unpkg.com/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+
+    <!-- EmailJS — client-side email sending (true one-click send) -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Photo polish (lazy-loads @imgly/background-removal on first use) -->
+    <script src="photo-polish.js"></script>
+
+    <!-- Tweaks panel shell (host protocol + controls) -->
+    <script type="text/babel" src="tweaks-panel.jsx"></script>
+
+    <!-- ID card renderer (front + back) -->
+    <script type="text/babel" src="id-card.jsx"></script>
+    <!-- App: form + live preview + export -->
+    <script type="text/babel" src="app.jsx"></script>
+  </body>
+</html>
