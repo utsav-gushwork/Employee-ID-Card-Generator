@@ -732,6 +732,7 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #9ca3af;
+  margin-top: 13px;
 }
 /* The card scales up from its native 204×324 Figma size so it
    reads at a comfortable preview scale without bloating the source. */
@@ -760,7 +761,7 @@ body {
 /* ── floating bottom toolbar ────────────────────────────────────── */
 .floating-toolbar {
   position: fixed;
-  bottom: 24px;
+  bottom: 44px;
   left: calc(50% + 190px);
   transform: translateX(-50%);
   display: flex;
@@ -1100,7 +1101,7 @@ body {
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: var(--ink-2);
+  color: #0d0d0d;
   white-space: nowrap;
 }
 .tb-pill .btn-email.is-sent {

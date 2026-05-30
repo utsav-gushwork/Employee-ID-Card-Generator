@@ -461,7 +461,7 @@ function CardFrame({ caption, children }) {
   return (
     <div className="card-frame">
       <div className="card-scale-wrap">
-        <div className="card-scale">{children}</div>
+        <div className="card-scale" style={{ width: "204px", height: "356px" }}>{children}</div>
       </div>
       <div className="card-caption">{caption}</div>
     </div>);
@@ -1455,8 +1455,8 @@ For printing, use the PDF and print at 100% scale (standard CR80, 54 × 85.6 mm)
             </PropSection>
 
             {/* Help — contact-for-help row pinned to the bottom of the
-                                     editor. Slack DM goes to Utsav for any queries or bug
-                                     reports about this tool. */}
+                                       editor. Slack DM goes to Utsav for any queries or bug
+                                       reports about this tool. */}
             <section className="prop-section help-section" style={{ padding: "20px 16px", gap: "6px" }}>
               <header className="prop-section-head">
                 <h3>Hey, need help?</h3>
@@ -1481,7 +1481,7 @@ For printing, use the PDF and print at 100% scale (standard CR80, 54 × 85.6 mm)
       </div>
 
       {/* ── RIGHT: preview surface ── */}
-      <main className="preview-col" style={{ alignItems: "center" }}>
+      <main className="preview-col" style={{ alignItems: "center", padding: "56px 32px 140px" }}>
         <div className="cards-stage">
           <div className="cards-row">
             <CardFrame caption="Front">
@@ -1507,7 +1507,7 @@ For printing, use the PDF and print at 100% scale (standard CR80, 54 × 85.6 mm)
 
       {/* ── floating bottom toolbar ── */}
       <div className="floating-toolbar">
-        <div className="tb-pill toolbar-pill" style={{ gap: "40px" }}>
+        <div className="tb-pill toolbar-pill" style={{ gap: "40px", padding: "6px 6px 6px 20px" }}>
           <span className="dl-prompt">Looking good? Get your card when you’re ready.</span>
           {/* Send-via-email temporarily removed — handlers retained for re-enable. */}
           <div
