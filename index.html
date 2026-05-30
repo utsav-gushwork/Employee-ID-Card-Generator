@@ -300,14 +300,28 @@
         var card = gate.querySelector('.pw-card');
         input.focus();
 
+        var unlocked = false;
+        function unlock() {
+          if (unlocked) return;
+          unlocked = true;
+          sessionStorage.setItem(KEY, '1');
+          if (root) root.style.visibility = '';
+          gate.style.transition = 'opacity 200ms ease';
+          gate.style.opacity = '0';
+          setTimeout(function () { gate.remove(); }, 220);
+        }
+
+        // Auto-continue: as soon as the typed/pasted value is correct,
+        // unlock without needing the Continue button.
+        input.addEventListener('input', function () {
+          error.hidden = true;
+          if (check(input.value)) unlock();
+        });
+
         form.addEventListener('submit', function (e) {
           e.preventDefault();
           if (check(input.value)) {
-            sessionStorage.setItem(KEY, '1');
-            if (root) root.style.visibility = '';
-            gate.style.transition = 'opacity 200ms ease';
-            gate.style.opacity = '0';
-            setTimeout(function () { gate.remove(); }, 220);
+            unlock();
           } else {
             error.hidden = false;
             card.classList.remove('shake');
